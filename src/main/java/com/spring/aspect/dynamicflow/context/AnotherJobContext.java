@@ -1,5 +1,7 @@
-package com.spring.aspect.dynamicflow.entity;
+package com.spring.aspect.dynamicflow.context;
 
+import com.spring.aspect.dynamicflow.entity.Job;
+import com.spring.aspect.dynamicflow.entity.TaskStatus;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
@@ -7,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 @Setter
-public class JobContext {
+public class AnotherJobContext {
 
     private Job job;
     private TaskStatus jobStatus;

@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class TaskAspects {
+public class ActivityAspects {
 
-    private static final Logger log = LoggerFactory.getLogger( TaskAspects.class );
+    private static final Logger log = LoggerFactory.getLogger( ActivityAspects.class );
 
-    @Around( "within(com.spring.aspect.dynamicflow.activity.TaskActivity+) ")
+    @Around( "within(com.spring.aspect.dynamicflow.activity.Activity+) ")
 //    @Around( "execution(com.spring.aspect.dynamicflow.activity.TaskActivity+) " + "&& args(proceedingJoinPoint)" )
     public Object handleTask( ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        log.info( "Handling the task aspects." );
+        log.info( "Handling the activity aspects." );
         log.info( "" + proceedingJoinPoint.getThis() );
 
         return proceedingJoinPoint.proceed();

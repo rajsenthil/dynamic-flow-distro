@@ -1,6 +1,6 @@
 package com.spring.aspect.dynamicflow.activity;
 
-import com.spring.aspect.dynamicflow.entity.JobContext;
+import com.spring.aspect.dynamicflow.context.JobContext;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,14 +10,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public abstract class TaskActivity {
+public abstract class Activity {
 
-    private static final Logger log = LoggerFactory.getLogger( TaskActivity.class );
+    private static final Logger log = LoggerFactory.getLogger( Activity.class );
 
-    @Around ( "execution(public java.lang.Object com.spring.aspect.dynamicflow.process.JobProcessImpl.process(..)) " + "&& args(context)" )
+    @Around ( "execution(public java.lang.Object com.spring.aspect.dynamicflow.process.AnotherProcessImpl.anotherProcess(..)) " + "&& args(context)" )
     public Object task( ProceedingJoinPoint proceedingJoinPoint, JobContext context ) throws Throwable {
-        log.info( "This is the base task and needs to overridden by the derived task for the job id: {} ", context.getJobStatus() );
-
+        log.info( "Dynamic Flow Distro: {} ", context.getJobStatus() );
         return  proceedingJoinPoint.proceed();
     }
 }

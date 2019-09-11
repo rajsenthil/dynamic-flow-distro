@@ -1,7 +1,7 @@
 package com.spring.aspect.dynamicflow.process;
 
+import com.spring.aspect.dynamicflow.context.AnotherJobContext;
 import com.spring.aspect.dynamicflow.entity.Job;
-import com.spring.aspect.dynamicflow.entity.JobContext;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -14,22 +14,21 @@ import java.util.UUID;
 
 @RunWith ( SpringRunner.class)
 @SpringBootTest
-public class JobProcessTest {
+public class AnotherJobProcessTest {
 
     private Logger logger = LoggerFactory.getLogger( this.getClass());
 
     @Autowired
-    private JobProcess jobProcess;
+    private AnotherProcess anotherProcess;
 
     @Test
-    public void testJobProcess() {
-        JobContext context = new JobContext();
+    public void testAnotherProcess() {
+        AnotherJobContext context = new AnotherJobContext();
         Job job = new Job();
 
         job.setJobId( UUID.randomUUID() );
         context.setJob( job );
-//        context.setJob( job );
-        jobProcess.process( context );
+        anotherProcess.anotherProcess( context );
 
         logger.info( "Job Status is {}", context.getJobStatus() );
     }
